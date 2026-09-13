@@ -13,9 +13,11 @@ let s:bsc_vim_runtime = s:project_root . '/vendor/bsc/util/vim'
 
 if isdirectory(s:bsc_vim_runtime)
   execute 'set runtimepath^=' . fnameescape(s:bsc_vim_runtime)
+elseif filereadable(expand('~/.vim/syntax/bsv.vim'))
+  " Installed by scripts/install-vim-support.sh; ~/.vim is already in runtimepath.
 else
   echohl WarningMsg
-  echomsg 'BSC Vim syntax files are missing; run: make bootstrap'
+  echomsg 'BSC Vim syntax files are missing; run: make bootstrap and install-vim-support.sh'
   echohl None
 endif
 

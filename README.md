@@ -56,6 +56,17 @@ BSC 官方当前测试 macOS arm64，因此 Apple Silicon 不需要 Rosetta。�
 
 建议每完成一个学习主题就提交一次，例如 `case: understand rule scheduling`。之后加入 FPGA 时，再单独增加板卡工具链和约束文件，不把板卡 SDK 强耦合到 BSC 基础环境。
 
+## Vim / LSP
+
+项目包含可复现的 Vim 配置，优先使用 BSC 官方自带的 BSV 文件类型、语法高亮和基础缩进：
+
+```bash
+make bootstrap
+vim -Nu editor/vim/vimrc examples/01_counter/Counter.bsv
+```
+
+完整说明见 [`editor/vim/README.md`](editor/vim/README.md)。其中也记录了可选的社区 `blues-lsp` 接入方式；LSP 只负责编辑器能力，编译和仿真仍以 `bsc`、`make counter` 为准。
+
 ## 后续路线
 
 1. rule 与 method：寄存器冲突、guard、schedule report。

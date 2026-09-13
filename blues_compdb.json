@@ -1,0 +1,6 @@
+[
+  {
+    "directory": ".",
+    "command": "./build/bsc/bin/bsc -u -p +:examples/01_counter examples/01_counter/Counter.bsv"
+  }
+]

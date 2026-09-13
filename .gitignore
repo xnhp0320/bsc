@@ -16,6 +16,17 @@ dist-newstyle/
 *.dylib
 *.o
 
+# BSV example-local compiler and simulator products
+examples/bsv_examples/*.ba
+examples/bsv_examples/*.bo
+examples/bsv_examples/*.bexe
+examples/bsv_examples/*.vexe
+examples/bsv_examples/*.so
+examples/bsv_examples/*.cxx
+examples/bsv_examples/*.h
+examples/bsv_examples/*.v
+examples/bsv_examples/*.out
+
 # macOS and editor files
 .DS_Store
 .idea/

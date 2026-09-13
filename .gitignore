@@ -1,0 +1,22 @@
+# Generated BSC source checkout and build products
+vendor/bsc/
+build/
+dist-newstyle/
+.git-local/
+
+# Local logs and simulator artefacts
+*.log
+*.vcd
+*.bo
+*.ba
+*.bi
+*.bexe
+*.vexe
+*.so
+*.dylib
+*.o
+
+# macOS and editor files
+.DS_Store
+.idea/
+.vscode/

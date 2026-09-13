@@ -1,0 +1,30 @@
+name: bsc-learning-cases
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install host dependencies
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then
+            sudo apt-get update
+            sudo apt-get install -y build-essential tcl-dev libgmp-dev pkg-config autoconf gperf flex bison iverilog ghc cabal-install libghc-regex-compat-dev libghc-syb-dev libghc-old-time-dev libghc-split-dev
+          else
+            brew install autoconf gmp gperf icarus-verilog pkg-config tcl-tk
+          fi
+      - name: Install strict-concurrency
+        run: cabal v1-install --user strict-concurrency
+      - name: Build pinned BSC
+        run: make build
+      - name: Run learning case
+        run: make counter
+      - name: Run upstream smoke test
+        run: make smoke

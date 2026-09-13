@@ -7,7 +7,7 @@ case "$(uname -s)" in
       echo "Install Homebrew first: https://brew.sh" >&2
       exit 1
     }
-    brew install autoconf gmp gperf icarus-verilog pkg-config tcl-tk
+    brew install autoconf gmp gperf icarus-verilog pkg-config tcl-tk make
     echo "Install GHC 9.6.7 with GHCup, then install Haskell packages:"
     echo "  ghcup install ghc 9.6.7"
     echo "  cabal v1-install --user regex-compat syb old-time split strict-concurrency"

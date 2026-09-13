@@ -6,6 +6,13 @@ BSC_SRC="${ROOT_DIR}/vendor/bsc"
 BSC_PREFIX="${BSC_PREFIX:-${ROOT_DIR}/build/bsc}"
 GHCJOBS="${GHCJOBS:-2}"
 
+# macOS ships BSD make as `make`; BSC's upstream build requires GNU Make.
+if [[ "$(uname -s)" == Darwin ]] && command -v gmake >/dev/null; then
+  MAKE_CMD="gmake"
+else
+  MAKE_CMD="make"
+fi
+
 # Cabal 3's `install --lib` puts packages in a project-local package store,
 # while the upstream Makefile checks packages through ghc-pkg. Make that
 # package database visible when the project-local Cabal flow is used.
@@ -29,7 +36,7 @@ echo "[build] compiling BSC into ${BSC_PREFIX}"
 # Building both SMT backends is useful later when learning scheduling and
 # typechecking. NO_DEPS_CHECKS is intentionally not used: it catches a
 # missing compiler dependency early on a new machine.
-make -C "${BSC_SRC}" install-src PREFIX="${BSC_PREFIX}" GHCJOBS="${GHCJOBS}"
+"${MAKE_CMD}" -C "${BSC_SRC}" install-src PREFIX="${BSC_PREFIX}" GHCJOBS="${GHCJOBS}"
 
 "${BSC_PREFIX}/bin/bsc" -help >/dev/null
 echo "[build] BSC executable is ready"

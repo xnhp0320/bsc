@@ -62,7 +62,7 @@ BSC 官方当前测试 macOS arm64，因此 Apple Silicon 不需要 Rosetta。�
 
 ```bash
 make bootstrap
-vim -Nu editor/vim/vimrc examples/01_counter/Counter.bsv
+vim -Nu .vimrc examples/01_counter/Counter.bsv
 ```
 
 完整说明见 [`editor/vim/README.md`](editor/vim/README.md)。其中也记录了可选的社区 `blues-lsp` 接入方式；LSP 只负责编辑器能力，编译和仿真仍以 `bsc`、`make counter` 为准。

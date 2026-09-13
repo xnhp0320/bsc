@@ -8,13 +8,13 @@
 
 ```bash
 make bootstrap
-vim -Nu editor/vim/vimrc examples/01_counter/Counter.bsv
+vim -Nu .vimrc examples/01_counter/Counter.bsv
 ```
 
 Neovim 也可以使用同一个配置：
 
 ```bash
-nvim -u editor/vim/vimrc examples/01_counter/Counter.bsv
+nvim -u .vimrc examples/01_counter/Counter.bsv
 ```
 
 打开 BSV 后，按 `<leader>c` 会执行 `make counter`，用于验证 Bluesim 和 Icarus Verilog 输出是否一致。

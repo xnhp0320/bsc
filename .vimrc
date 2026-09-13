@@ -21,24 +21,13 @@ else
   echohl None
 endif
 
-set nocompatible
 filetype plugin indent on
-syntax enable
-
-set number
-set hidden
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
-set expandtab
-set makeprg=make
 
 augroup bsc_project_vim
   autocmd!
-  autocmd FileType bsv setlocal commentstring=//\ %s
+  autocmd FileType bsv setlocal syntax=bsv commentstring=//\ %s
   autocmd FileType bsv setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
   autocmd FileType bsv setlocal suffixesadd=.bsv
+  autocmd FileType bsv setlocal makeprg=make
+  autocmd FileType bsv nnoremap <buffer> <silent> <leader>c :make counter<CR>
 augroup END
-
-" Project-level smoke command. It is intentionally opt-in: press <leader>c.
-nnoremap <silent> <leader>c :make counter<CR>

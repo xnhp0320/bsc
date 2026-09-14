@@ -17,7 +17,8 @@ fi
 # while the upstream Makefile checks packages through ghc-pkg. Make that
 # package database visible when the project-local Cabal flow is used.
 if command -v ghc >/dev/null && [[ -d "${ROOT_DIR}/build/cabal/store/ghc-$(ghc --numeric-version)/package.db" ]]; then
-  export GHC_PACKAGE_PATH="${ROOT_DIR}/build/cabal/store/ghc-$(ghc --numeric-version)/package.db:/usr/lib/ghc/lib/package.conf.d${GHC_PACKAGE_PATH:+:${GHC_PACKAGE_PATH}}"
+  system_ghc_package_db="$(ghc --print-libdir)/package.conf.d"
+  export GHC_PACKAGE_PATH="${ROOT_DIR}/build/cabal/store/ghc-$(ghc --numeric-version)/package.db:${system_ghc_package_db}${GHC_PACKAGE_PATH:+:${GHC_PACKAGE_PATH}}"
 fi
 
 if [[ ! -f "${BSC_SRC}/GNUmakefile" ]]; then
